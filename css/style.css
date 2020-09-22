@@ -1,0 +1,63 @@
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+/* Generiche, body e wrapper */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+#wrapper {
+  background-color: peachpuff;
+  border: 5px solid lightblue;
+  width: 80%;
+  margin: auto;
+}
+/* fine generiche, body e wrapper */
+
+/* Header */
+input#movie-input {
+  width: 300px;
+}
+
+input#cerca {
+  padding: 5px;
+  border-radius: 7px;
+}
+/* fine header */
+
+/* Main */
+ul#movies {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.single-movie {
+  padding: 20px;
+  border: 2px solid black;
+  width: 150px;
+  margin: 10px 5px 20px 10px;
+}
+
+.single-movie .titolo {
+  height: 100px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.single-movie .titolo-og {
+  height: 80px;
+}
+
+.single-movie .lingua-og {
+  height: 30px;
+}
+
+.single-movie .voto {
+  font-size: 17px;
+  text-align: center;
+}
+/* fine main */

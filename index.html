@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Boolflix - Netflix's cooler brother</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+  </head>
+  <body>
+    <!-- Content wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <div id="barra-ricerca">
+        <input id="movie-input" type="text" placeholder="Inserisci il titolo di un film">
+        <input id="cerca" type="submit" value="Cerca">
+      </div>
+      <!-- / header -->
+      <!-- Main -->
+      <!-- Movies list -->
+      <ul id="movies"></ul>
+      <!-- / movies list -->
+      <!-- / main -->
+    </div>
+    <!-- / content wrapper -->
+    <!-- Template Handlebars -->
+    <script id="movie-template" type="text/x-handlebars-template">
+      <li class="single-movie">
+        <h3 class="titolo">{{title}}</h3>
+        <h5 class="titolo-og"><span>Titolo originale: </span>{{original_title}}</h5>
+        <h6 class="lingua-og"><span>Lingua originale: </span>{{original_language}}</h6>
+        <h4 class="voto"><span>Voto medio: </span>{{vote_average}}</h4>
+      </li>
+    </script>
+    <!-- / template handlebars -->
+    <script src="js/script.js" charset="utf-8"></script>
+  </body>
+</html>
