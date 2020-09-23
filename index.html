@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Boolflix - Netflix's cooler brother</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -24,16 +25,28 @@
       <!-- / main -->
     </div>
     <!-- / content wrapper -->
-    <!-- Template Handlebars -->
+    <!-- Templates Handlebars -->
+    <!-- Movie -->
     <script id="movie-template" type="text/x-handlebars-template">
       <li class="single-movie">
         <h3 class="titolo">{{title}}</h3>
         <h5 class="titolo-og"><span>Titolo originale: </span>{{original_title}}</h5>
-        <h6 class="lingua-og"><span>Lingua originale: </span>{{original_language}}</h6>
-        <h4 class="voto"><span>Voto medio: </span>{{vote_average}}</h4>
+        <h6 class="lingua-og"><span>Lingua originale: </span><img src="{{{original_language}}}" alt="{{no_flag}}"></h6>
+        <h4 class="voto"><span>Voto medio: </span><span class="stars">{{{vote_average}}}</span></h4>
       </li>
     </script>
-    <!-- / template handlebars -->
+    <!-- / movie -->
+    <!-- Full star -->
+    <script id="fullstar-template" type="text/x-handlebars-template">
+      <i class="fas fa-star"></i>
+    </script>
+    <!-- / full star -->
+    <!-- Empty star -->
+    <script id="emptystar-template" type="text/x-handlebars-template">
+      <i class="far fa-star"></i>
+    </script>
+    <!-- / empty star -->
+    <!-- / templates handlebars -->
     <script src="js/script.js" charset="utf-8"></script>
   </body>
 </html>

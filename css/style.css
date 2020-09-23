@@ -56,8 +56,18 @@ ul#movies {
   height: 30px;
 }
 
+.single-movie .lingua-og img {
+  width: 20px;
+  height: auto;
+  vertical-align: middle;
+}
+
 .single-movie .voto {
   font-size: 17px;
   text-align: center;
+}
+
+.single-movie .voto .stars {
+  font-size: 10px;
 }
 /* fine main */
