@@ -5,19 +5,26 @@ $(document).ready(function(){
 $("#cerca").click(function() {
   // Prendiamo come query per la ricerca dei film l'input dell'utente
   var inputUtente = $("#movie-input").val();
-  // Chiamiamo la funzione di ricerca del film
-  movieSearch(inputUtente);
-  clearSearch();
+  // Chiamiamo la funzione di ricerca del film SE l'input non è vuoto
+  if(inputUtente != "") {
+    clearSearch();
+    movieSearch(inputUtente);
+    tvSearch(inputUtente);
+  }
 });
 
 // Evento all'invio
 $("#movie-input").keyup(
   function(e){
     if(e.which == 13) {
-      // Prendiamo come query per la ricerca dei film l'input dell'utente
+    // Prendiamo come query per la ricerca dei film l'input dell'utente
       var inputUtente = $("#movie-input").val();
-      movieSearch(inputUtente);
-      clearSearch();
+      // Chiamiamo la funzione di ricerca del film SE l'input non è vuoto
+      if(inputUtente != "") {
+        clearSearch();
+        movieSearch(inputUtente);
+        tvSearch(inputUtente);
+      }
     }
   });
 
@@ -72,15 +79,10 @@ function movieSearch(inputGenerico) {
   });
 }
 
-// Funzione che svuota il valore di html e value dopo la ricerca
-function clearSearch() {
-  $("ul#movies").empty();
-  $("#movie-input").val("");
-}
-
-// Funzione che prende un array e stampa ogni suo elemento nel template handlebars
+// Funzione che prende un array e stampa ogni suo FILM nel template handlebars
 function moviePrint(objectArray) {
   for(var i=0; i < objectArray.length; i++) {
+    // Prendiamo il template di handlebars
     var source = $("#movie-template").html();
     var template = Handlebars.compile(source);
     // Calcoliamo il voto da 1 a 5
@@ -95,10 +97,61 @@ function moviePrint(objectArray) {
       "original_language": printFlag(language),
       "no_flag": objectArray[i].original_language,
       "vote_average": starPrint(vote5)
-      };
+    };
     var html = template(content);
     $("#movies").append(html);
   }
+}
+
+// Funzione che prende un input e ricerca serie tv nell'API
+function tvSearch(inputGenerico) {
+  $.ajax({
+    "url": "https://api.themoviedb.org/3/search/tv",
+    "data": {
+      "api_key": "4c51a288148bd58a06eb503205aefc6f",
+      "language": "it-IT",
+      "query": inputGenerico,
+      "page": 1,
+      "include_adult": false,
+    },
+    "method": "GET",
+    "success": function(data) {
+      var risultati = data.results;
+      tvPrint(risultati);
+    },
+    "error": function(error) {
+      alert("Another error");
+    }
+  });
+}
+
+// Funzione che prende un array e stampa ogni sua SERIE TV nel template handlebars
+function tvPrint(objectArray) {
+  for(var i = 0; i < objectArray.length; i++) {
+    var source = $("#movie-template").html();
+    var template = Handlebars.compile(source);
+    // Calcoliamo il voto da 1 a 5
+    var vote10 = objectArray[i].vote_average;
+    var vote5 = convertVote(vote10, 10);
+    // Mettiamo il valore di "original_language" in una variabile
+    var language = objectArray[i].original_language;
+    // Riempiamo il template di handlebars e lo appendiamo
+    var content = {
+      "title": objectArray[i].name,
+      "original_title": objectArray[i].original_name,
+      "original_language": printFlag(language),
+      "no_flag": objectArray[i].original_language,
+      "vote_average": starPrint(vote5)
+    };
+    var html = template(content);
+    $("#movies").append(html);
+  }
+}
+
+// Funzione che svuota il valore di html e value dopo la ricerca
+function clearSearch() {
+  $("ul#movies").empty();
+  $("#movie-input").val("");
 }
 
 
