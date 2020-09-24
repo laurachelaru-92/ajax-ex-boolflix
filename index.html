@@ -13,15 +13,20 @@
     <!-- Content wrapper -->
     <div id="wrapper">
       <!-- Header -->
-      <div id="barra-ricerca">
-        <input id="movie-input" type="text" placeholder="Inserisci il titolo di un film">
+      <header id="barra-ricerca">
+        <input id="search-input" type="text" placeholder="Inserisci il titolo di un film">
         <input id="cerca" type="submit" value="Cerca">
-      </div>
+      </header>
       <!-- / header -->
       <!-- Main -->
-      <!-- Movies list -->
-      <ul id="movies"></ul>
-      <!-- / movies list -->
+      <main>
+        <!-- Movies list -->
+        <ul id="movies"></ul>
+        <!-- / movies list -->
+        <!-- Tv list -->
+        <ul id="tv-series"></ul>
+        <!-- / tv list -->
+      </main>
       <!-- / main -->
     </div>
     <!-- / content wrapper -->
@@ -29,9 +34,22 @@
     <!-- Movie -->
     <script id="movie-template" type="text/x-handlebars-template">
       <li class="single-movie">
+        <span class="type-label {{content-type}}">{{content-type}}</span>
         <h3 class="titolo">{{title}}</h3>
+        <div class="immagine-poster">
+          {{#if isPosterHTML}}
+          <img class="poster" src="https://image.tmdb.org/t/p/w154{{poster-path}}">
+          {{/if}}
+        </div>
         <h5 class="titolo-og"><span>Titolo originale: </span>{{original_title}}</h5>
-        <h6 class="lingua-og"><span>Lingua originale: </span><img src="{{{original_language}}}" alt="{{no_flag}}"></h6>
+        <h6 class="lingua-og">
+          <span>Lingua originale: </span>
+          {{#if img-flag}}
+          <img src="img/flags/{{flag-lang}}.svg">
+          {{else}}
+          {{flag-lang}}
+          {{/if}}
+        </h6>
         <h4 class="voto"><span>Voto medio: </span><span class="stars">{{{vote_average}}}</span></h4>
       </li>
     </script>

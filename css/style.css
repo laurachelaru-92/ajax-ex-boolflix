@@ -18,13 +18,20 @@ body {
 /* fine generiche, body e wrapper */
 
 /* Header */
-input#movie-input {
+header {
+  padding: 10px;
+}
+
+input#search-input {
   width: 300px;
 }
 
-input#cerca {
+input#cerca,
+input#search-input {
   padding: 5px;
   border-radius: 7px;
+  border: none;
+  outline: none;
 }
 /* fine header */
 
@@ -36,16 +43,43 @@ ul#movies {
 }
 
 .single-movie {
-  padding: 20px;
+  padding: 20px 3px;
   border: 2px solid black;
-  width: 150px;
+  width: 180px;
   margin: 10px 5px 20px 10px;
+  position: relative;
+}
+
+.single-movie .type-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+  padding: 5px;
+  font-size: 10px;
+  text-transform: capitalize;
+  color: white;
+}
+
+.single-movie .type-label.film {
+  background-color: green;
+}
+
+.single-movie .type-label.tv {
+  background-color: red;
 }
 
 .single-movie .titolo {
   height: 100px;
   text-align: center;
   font-size: 15px;
+}
+
+.single-movie .immagine-poster {
+  width: 154px;
+  height: 231px;
+  margin: auto;
+  background-color: white;
 }
 
 .single-movie .titolo-og {
