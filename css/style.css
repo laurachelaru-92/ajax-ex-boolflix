@@ -5,25 +5,41 @@ padding: 0;
 }
 
 /* Generiche, body e wrapper */
+.d-none {
+  display: none;
+}
+
+.totalOpacity {
+  opacity: 0;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
 }
 
 #wrapper {
-  background-color: peachpuff;
-  border: 5px solid lightblue;
-  width: 80%;
-  margin: auto;
+  background-color: #000;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
 }
 /* fine generiche, body e wrapper */
 
 /* Header */
 header {
-  padding: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+header #logo img {
+  width: 200px;
+  height: auto;
+  padding: 20px 0 10px 0;
 }
 
 input#search-input {
-  width: 300px;
+  width: 30%;
+  margin-right: 10px;
 }
 
 input#cerca,
@@ -33,53 +49,101 @@ input#search-input {
   border: none;
   outline: none;
 }
+
+input#cerca {
+  background-color: red;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
 /* fine header */
 
 /* Main */
-ul#movies {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
+main {
+  color: #fff;
 }
 
-.single-movie {
-  padding: 20px 3px;
-  border: 2px solid black;
-  width: 180px;
-  margin: 10px 5px 20px 10px;
+main section {
+  width: 100%;
   position: relative;
 }
 
-.single-movie .type-label {
+main section h2,
+main section > p {
+  padding-left: 30px;
+}
+
+#tv-section {
+  margin: 20px 0;
+}
+
+ul#movies,
+ul#tv-series {
+  width: 100%;
+  padding: 0 10px;
+  list-style: none;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+section > i {
   position: absolute;
-  top: 0;
-  right: 0;
-  text-align: right;
-  padding: 5px;
-  font-size: 10px;
-  text-transform: capitalize;
-  color: white;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: all 0.4s ease;
+  font-size: 30px;
+  color: #fff;
 }
 
-.single-movie .type-label.film {
-  background-color: green;
+section > i:hover {
+  color: red;
+  opacity: 1;
 }
 
-.single-movie .type-label.tv {
-  background-color: red;
+.fa-chevron-circle-left {
+  left: 10px;
+}
+
+.fa-chevron-circle-right {
+  right: 10px;
+}
+
+/* Single-movie */
+.single-movie {
+  position: relative;
+  padding: 20px;
+  border: 2px solid black;
+  width: 185px;
+  height: 278px;
+  margin: 10px 40px 20px 0;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 .single-movie .titolo {
   height: 100px;
-  text-align: center;
   font-size: 15px;
 }
 
 .single-movie .immagine-poster {
-  width: 154px;
-  height: 231px;
-  margin: auto;
-  background-color: white;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 185px;
+  height: 278px;
+  transition: opacity 0.5s ease;
+}
+
+.single-movie:hover .immagine-poster {
+  opacity: 0.2;
+}
+
+.single-movie .immagine-poster img {
+  width: 185px;
+  height: 100%;
 }
 
 .single-movie .titolo-og {
@@ -97,11 +161,11 @@ ul#movies {
 }
 
 .single-movie .voto {
-  font-size: 17px;
-  text-align: center;
+  font-size: 12px;
 }
 
 .single-movie .voto .stars {
   font-size: 10px;
 }
+/* fine single-movie */
 /* fine main */

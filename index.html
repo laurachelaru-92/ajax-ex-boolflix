@@ -13,35 +13,48 @@
     <!-- Content wrapper -->
     <div id="wrapper">
       <!-- Header -->
-      <header id="barra-ricerca">
-        <input id="search-input" type="text" placeholder="Inserisci il titolo di un film">
+      <header>
+        <div id="logo"><img src="img/boolflix_logo.png" alt="logo"></div>
+        <input id="search-input" type="text" placeholder="Inserisci il titolo di un film o di una serie tv">
         <input id="cerca" type="submit" value="Cerca">
       </header>
       <!-- / header -->
       <!-- Main -->
       <main>
-        <!-- Movies list -->
-        <ul id="movies"></ul>
-        <!-- / movies list -->
-        <!-- Tv list -->
-        <ul id="tv-series"></ul>
-        <!-- / tv list -->
+        <!-- Movies section -->
+        <section id="movie-section" class="d-none">
+          <i class="fas fa-chevron-circle-left totalOpacity"></i>
+          <h2>Film</h2>
+          <ul id="movies"></ul>
+          <i class="fas fa-chevron-circle-right totalOpacity"></i>
+        </section>
+        <!-- / movies section -->
+        <!-- Tv section -->
+        <section id="tv-section" class="d-none">
+          <i class="fas fa-chevron-circle-left totalOpacity"></i>
+          <h2>Serie TV</h2>
+          <ul id="tv-series"></ul>
+          <i class="fas fa-chevron-circle-right totalOpacity"></i>
+        </section>
+        <!-- / tv section -->
       </main>
       <!-- / main -->
     </div>
     <!-- / content wrapper -->
     <!-- Templates Handlebars -->
     <!-- Movie -->
-    <script id="movie-template" type="text/x-handlebars-template">
+    <script id="element-template" type="text/x-handlebars-template">
       <li class="single-movie">
-        <span class="type-label {{content-type}}">{{content-type}}</span>
         <h3 class="titolo">{{title}}</h3>
         <div class="immagine-poster">
           {{#if isPosterHTML}}
-          <img class="poster" src="https://image.tmdb.org/t/p/w154{{poster-path}}">
+          <img src="https://image.tmdb.org/t/p/w185{{poster-path}}">
+          {{else}}
+          <img src="img/no_poster.png" alt="no image available">
           {{/if}}
         </div>
         <h5 class="titolo-og"><span>Titolo originale: </span>{{original_title}}</h5>
+        <h5 class="attori">Attori: {{attori5}}</h5>
         <h6 class="lingua-og">
           <span>Lingua originale: </span>
           {{#if img-flag}}
@@ -50,7 +63,7 @@
           {{flag-lang}}
           {{/if}}
         </h6>
-        <h4 class="voto"><span>Voto medio: </span><span class="stars">{{{vote_average}}}</span></h4>
+        <h4 class="voto"><span>Voto medio: </span><span class="stars"> {{{vote_average}}}</span></h4>
       </li>
     </script>
     <!-- / movie -->
@@ -64,6 +77,9 @@
       <i class="far fa-star"></i>
     </script>
     <!-- / empty star -->
+    <script id="not-found-template" type="text/x-handlebars-template">
+      <p>Nessun risultato trovato</p>
+    </script>
     <!-- / templates handlebars -->
     <script src="js/script.js" charset="utf-8"></script>
   </body>
