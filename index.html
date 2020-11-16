@@ -21,6 +21,13 @@
       <!-- / header -->
       <!-- Main -->
       <main>
+        <!-- Homepage message -->
+        <div id="homepage-message">
+          <p>Benvenuto in Boolflix!<br>
+          <small>Il tuo portale per i migliori film e serie tv del momento!</small><br>
+            Fai la tua ricerca...</p>
+        </div>
+        <!-- / homepage message -->
         <!-- Movies section -->
         <section id="movie-section" class="d-none">
           <i class="fas fa-chevron-circle-left totalOpacity"></i>
@@ -44,17 +51,19 @@
     <!-- Templates Handlebars -->
     <!-- Movie -->
     <script id="element-template" type="text/x-handlebars-template">
-      <li class="single-movie">
+      <li class="single-movie" data-id="{{movie-id}}">
         <h3 class="titolo">{{title}}</h3>
         <div class="immagine-poster">
           {{#if isPosterHTML}}
-          <img src="https://image.tmdb.org/t/p/w185{{poster-path}}">
+            <img src="https://image.tmdb.org/t/p/w185{{poster-path}}">
           {{else}}
-          <img src="img/no_poster.png" alt="no image available">
+            <img src="img/no_poster.png" alt="no image available">
           {{/if}}
         </div>
-        <h5 class="titolo-og"><span>Titolo originale: </span>{{original_title}}</h5>
-        <h5 class="attori">Attori: {{attori5}}</h5>
+        {{#if hasOriginalTitle}}
+          <h5 class="titolo-og"><span>Titolo originale: </span>{{original_title}}</h5>
+        {{/if}}
+        <h5 class="attori"></h5>
         <h6 class="lingua-og">
           <span>Lingua originale: </span>
           {{#if img-flag}}

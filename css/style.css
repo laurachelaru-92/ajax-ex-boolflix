@@ -15,10 +15,13 @@ padding: 0;
 
 body {
   font-family: 'Roboto', sans-serif;
+  background-image: url('../img/bg.jpg');
+  width: 100%;
+  height: 100vh;
 }
 
 #wrapper {
-  background-color: #000;
+  background-color: rgba(0,0,0,0.5);
   width: 100%;
   height: 100vh;
   overflow-y: auto;
@@ -63,9 +66,27 @@ main {
   color: #fff;
 }
 
+/* Homepage message */
+main #homepage-message p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 50px;
+  width: 80%;
+  font-weight: bold;
+}
+
+main #homepage-message p small {
+  font-size: 35px;
+}
+/* fine homepage message */
+
 main section {
   width: 100%;
   position: relative;
+  background-color: rgba(0,0,0,0.6);
 }
 
 main section h2,
@@ -73,8 +94,13 @@ main section > p {
   padding-left: 30px;
 }
 
+#movie-section {
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
 #tv-section {
-  margin: 20px 0;
+  padding: 20px 0;
 }
 
 ul#movies,
@@ -121,10 +147,11 @@ section > i:hover {
   margin: 10px 40px 20px 0;
   text-align: center;
   flex-shrink: 0;
+  background-color: #000;
 }
 
 .single-movie .titolo {
-  height: 100px;
+  padding: 10px 0;
   font-size: 15px;
 }
 
@@ -147,11 +174,11 @@ section > i:hover {
 }
 
 .single-movie .titolo-og {
-  height: 80px;
+  padding: 20px 0;
 }
 
 .single-movie .lingua-og {
-  height: 30px;
+  padding-top: 10px;
 }
 
 .single-movie .lingua-og img {
@@ -162,6 +189,7 @@ section > i:hover {
 
 .single-movie .voto {
   font-size: 12px;
+  padding-top: 10px;
 }
 
 .single-movie .voto .stars {
