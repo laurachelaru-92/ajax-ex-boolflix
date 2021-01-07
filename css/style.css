@@ -67,6 +67,10 @@ main {
 }
 
 /* Homepage message */
+main #homepage-message {
+  user-select: none;
+}
+
 main #homepage-message p {
   position: absolute;
   top: 50%;
@@ -197,3 +201,25 @@ section > i:hover {
 }
 /* fine single-movie */
 /* fine main */
+
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 900px) {
+  header #search-input {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  main #homepage-message p {
+    font-size: 40px;
+  }
+
+  main #homepage-message p small {
+    font-size: 25px;
+  }
+
+  header #search-input {
+    width: 70%;
+  }
+}
