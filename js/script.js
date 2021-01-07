@@ -10,6 +10,8 @@ $("#cerca").click(function() {
     movieTvSearch("movie", inputUtente);
     movieTvSearch("tv", inputUtente);
     $("#homepage-message").addClass('d-none');
+    $("#logo").addClass('d-none');
+    $("header").addClass("h-fix");
   }
 });
 
@@ -25,6 +27,8 @@ $("#search-input").keyup(
         movieTvSearch("movie", inputUtente);
         movieTvSearch("tv", inputUtente);
         $("#homepage-message").addClass('d-none');
+        $("#logo").addClass('d-none');
+        $("header").addClass("h-fix");
       }
     }
   });
